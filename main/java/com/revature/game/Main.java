@@ -6,13 +6,14 @@ import com.revature.fixtures.Room;
 
 public class Main {
 	public static void main(String[] args) {
-		RoomManager rm = new RoomManager();
+		RoomManager rm = new RoomManager(12);
 		System.out.println(rm);
-		Player p = new Player(rm.startingRoom);
+		Player p = new Player(rm.getStartingRoom());
 		printRoom(p);
 		Scanner s = new Scanner(System.in);
 		while(GameLoop.getGameON()) {
 			try {
+				Rendering.render(rm, p.getCurrentRoom());
 				parse(collectInput(s), p);
 			}catch(Exception e){
 				System.out.println("parse error...");
@@ -59,6 +60,7 @@ public class Main {
 		
 		if(action.equals("go")) {
 			Room currentRoom = p.getCurrentRoom();
+			currentRoom.setCurrent(false);
 			try {
 				Room nextRoom = currentRoom.getExit(target);
 				p.setCurrentRoom(nextRoom);

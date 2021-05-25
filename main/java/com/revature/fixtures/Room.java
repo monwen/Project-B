@@ -1,20 +1,55 @@
 package com.revature.fixtures;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Room extends Fixture{
-	Room[] exits;
+	private Room[] exits;
+	private List<Integer> index;
+	private boolean isCurrent;
+	private List<String> actionList;
 	
 	public Room() {
 		super();
 		this.exits = new Room[4];
+		this.isCurrent = false;
+		this.actionList = new ArrayList(Arrays.asList("go"));
 	}
 	
 	public Room(String name, String s, String l) {
 		super(name, s, l);
 		this.exits = new Room[4];
+		this.isCurrent = false;
+		this.actionList = new ArrayList(Arrays.asList("go"));
+		
 	}
 	
+
+	public List<String> getActionList() {
+		return actionList;
+	}
+
+	public void setActionList(List<String> actionList) {
+		this.actionList = actionList;
+	}
+
+	public boolean isCurrent() {
+		return isCurrent;
+	}
+
+	public void setCurrent(boolean isCurrent) {
+		this.isCurrent = isCurrent;
+	}
+
+	public List<Integer> getIndex() {
+		return index;
+	}
+
+	public void setIndex(List<Integer> index) {
+		this.index = index;
+	}
+
 	public Room[] getExits() {
 		return this.exits;
 	}

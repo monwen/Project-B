@@ -13,5 +13,6 @@ public class Player {
 	}
 	public void setCurrentRoom(Room r) {
 		this.currentRoom = r;
+		r.setCurrent(true);
 	}
 }
